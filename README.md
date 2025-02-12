@@ -54,15 +54,87 @@ The dataset is the [Yelp Academic Dataset](https://www.yelp.com/dataset) filtere
 <br/>
 
 ## Dataset
-Yelp Academic Dataset:
+### Yelp Academic Dataset:
+- [Official Link](https://www.yelp.com/dataset) – not included in this repo due to size.
+- We filter data for Arizona (`state = 'AZ'`).
+- `business_id` & `user_id` are common across the `business`, `review`, `user`, `checkin`, `tip` JSON files.
+### Data Files
+- `yelp_academic_dataset_business.json`
+- `yelp_academic_dataset_user.json`
+- `yelp_academic_dataset_review.json`
+- `yelp_academic_dataset_checkin.json`
+- `yelp_academic_dataset_tip.json`
 
-Official Link – not included in this repo due to size.
-We filter data for Arizona (state = 'AZ').
-business_id & user_id are common across the business, review, user, checkin, tip JSON files.
-Data Files
-yelp_academic_dataset_business.json
-yelp_academic_dataset_user.json
-yelp_academic_dataset_review.json
-yelp_academic_dataset_checkin.json
-yelp_academic_dataset_tip.json
+<br/>
 
+## How to Run
+- Clone Repo:
+  ```
+  git clone https://github.com/<YourUser>/yelp-arizona-business-analysis.git
+  cd yelp-arizona-business-analysis
+  ```
+- **Launch VM** (if using course-provided OVA/UTM).
+- Start Hadoop & Spark (in the VM):
+  ```
+  hdfs namenode -format   # first time only
+  start-dfs.sh
+  start-yarn.sh
+  pyspark
+  ```
+- Open the Notebook:
+  ```
+  cd Milestone1-Business
+  jupyter notebook Project1Milestone1.ipynb
+  ```
+- Run cells to see queries & analysis. Similarly for `Milestone2-User`.
+
+<br/>
+
+## Milestone 1: Business-Level Analysis
+- **Objective**: Analyze AZ businesses, focusing on attributes, ratings, categories, location patterns.
+- **Approach**:
+  - Convert JSON to Parquet or a suitable Spark format.
+  - Filter to `state='AZ'`.
+  - Perform SQL-like queries in Spark (e.g., spark.sql("SELECT ... FROM ... WHERE ...")).
+  - Generate graphs & insights.
+- **Queries**:
+  - 5 total (minimum), at least 3 complex queries combining multiple datasets.
+  - Example: “Top 10 highest-rated businesses in the ‘Restaurants’ category within Phoenix.”
+
+<br/>
+
+## Milestone 2: User-Level Analysis
+- **Objective**: Analyze user behavior (reviews, tips, sentiment, influence).
+**Approach**:
+- Focus on users who reviewed the AZ businesses from Milestone 1.
+- Possibly do sentiment analysis on `review.txt` or `tip.txt`.
+- Check user attributes (average stars, friend count, compliment counts).
+**Queries**:
+- 10 total, 6 of which combine multiple datasets.
+Example: “Which users have the most influence (highest fans or compliment counts) in a specific business category?”
+
+<br/>
+
+## Results
+- Data filtering & approach
+- Spark queries (with code snippets, no direct copy from provided notebooks)
+- Graphs & figures
+- Key insights from business-level and user-level analysis
+
+</br>
+
+## Acknowledgments
+- Dataset, test cases, etc. provided by Dr. Samira Ghayekhloo from Arizona State University.
+
+</br>
+
+## License
+This project is released under the `MIT License`. That means you’re free to use, modify, and distribute the code, but you do so at your own risk.
+
+</br>
+
+## Contact
+Author: Varshith Dupati </br>
+GitHub: @dvarshith </br>
+Email: dvarshith942@gmail.com </br>
+Issues: Please open an issue on this repo if you have questions or find bugs. </br>
